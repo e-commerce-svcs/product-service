@@ -9,6 +9,7 @@ python = "^3.11"
 starlite = "^1.47.0"
 sqlmodel = "^0.0.8"
 asyncpg = "^0.27.0"
+uvicorn = "^0.20.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
