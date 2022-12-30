@@ -6,4 +6,5 @@ class Product(pydantic.BaseModel):
     name: str
     description: str
     price: float
-    quantity: int
+    image: pydantic.AnyHttpUrl
+    tags: list[str]
