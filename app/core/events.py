@@ -6,6 +6,7 @@ from app.db import events as db_events
 def get_start_app_handler():
     async def start_app(state: starlite.State) -> None:
         await db_events.create_db_engine(state)
+        await db_events.init_db_repositories(state)
         await db_events.create_db_tables(state)
 
     return start_app

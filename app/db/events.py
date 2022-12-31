@@ -4,6 +4,7 @@ import starlite
 from sqlalchemy.ext import asyncio as sa_asyncio
 
 from app.core import config
+from app.db.repositories import products
 
 
 async def create_db_engine(state: starlite.State):
@@ -18,6 +19,12 @@ async def create_db_engine(state: starlite.State):
 
 async def dispose_db_engine(state: starlite.State) -> None:
     await state.engine.dispose()
+
+
+async def init_db_repositories(state: starlite.State) -> None:
+    state.repositories = {
+        "products": products.ProductsRepository(),
+    }
 
 
 async def create_db_tables(state: starlite.State) -> None:

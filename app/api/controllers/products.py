@@ -1,6 +1,7 @@
 import pydantic
 import starlite
 
+from app.api.dependencies import database
 from app.models import domain
 
 
@@ -8,7 +9,7 @@ class ProductController(starlite.Controller):
     path = "/products"
 
     dependencies: dict[str, "starlite.Provide"] = {
-        "product_repo": starlite.Provide(lambda: ""),
+        "product_repo": starlite.Provide(database.get_products_repo),
     }
 
     @starlite.get()
